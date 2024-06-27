@@ -33,6 +33,7 @@
 
 		gtag('config', 'UA-119386393-1');
 	</script>
+
 </head>
 
 <body>
@@ -45,11 +46,8 @@
 			<div class="header-search">
 				<form>
 					<div class="form-group mb-0">
-						<i class="dw dw-search2 search-icon"></i>
-						<input type="text" class="form-control search-input" placeholder="Search Here">
 						<div class="dropdown">
 							<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-								<i class="ion-arrow-down-c"></i>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<div class="form-group row">
@@ -89,10 +87,7 @@
 			</div>
 			<div class="user-notification">
 				<div class="dropdown">
-					<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-						<i class="icon-copy dw dw-notification"></i>
-						<span class="badge notification-active"></span>
-					</a>
+
 					<div class="dropdown-menu dropdown-menu-right">
 						<div class="notification-list mx-h-350 customscroll">
 							<ul>
@@ -149,7 +144,7 @@
 						<span class="user-icon">
 							<img src="vendors/images/photo1.jpg" alt="">
 						</span>
-						<span class="user-name">User SWQ</span>
+						<span class="user-name" id="username">User SWQ</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 						<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
@@ -265,32 +260,23 @@
 				<ul id="accordion-menu">
 					<li class="dropdown">
 						<a href="index.html" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-house-1"></span><span class="mtext" href="index.html">Home</span>
+							<span class="micon dw dw-house-1"></span><span class="mtext" href="index.html">หน้าหลัก</span>
 						</a>
 					</li>
 
 					<li>
 						<a href="calendar.html" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-calendar1"></span><span class="mtext">Calendar</span>
+							<span class="micon dw dw-calendar1"></span><span class="mtext">ปฏิทิน</span>
 						</a>
 					</li>
 
 					<li class="dropdown">
 						<a href="apexcharts.html" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-analytics-21"></span><span class="mtext">Dashboard</span>
+							<span class="micon dw dw-analytics-21"></span><span class="mtext">แผงควบคุม</span>
 						</a>
 
 					</li>
-					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-right-arrow1"></span><span class="mtext">Additional Pages</span>
-						</a>
-						<ul class="submenu">
-							<li><a href="login.html">Login</a></li>
-							<li><a href="forgot-password.html">Forgot Password</a></li>
-							<li><a href="reset-password.html">Reset Password</a></li>
-						</ul>
-					</li>
+
 				</ul>
 			</div>
 		</div>
@@ -306,7 +292,7 @@
 					</div>
 					<div class="col-md-8">
 						<h4 class="font-20 weight-500 mb-10 text-capitalize">
-							Welcome to WaterQuelity
+							ยินดีต้อนรับสู่ WaterQuelity
 						</h4>
 					</div>
 				</div>
@@ -368,14 +354,22 @@
 			<div class="row">
 				<div class="col-xl-12 mb-30">
 					<div class="card-box height-100-p pd-20">
-						<h2 class="h4 mb-20">COMPARE HOURS</h2>
-						<div id="chart5"></div>
+						<h2 class="h4 mb-20">กราฟชั่วโมง</h2>
+						<div id="chart"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xl-12 mb-30">
+					<div class="card-box height-100-p pd-20">
+						<h2 class="h4 mb-20">กราฟชั่วโมง (TDS)</h2>
+						<div id="chart4"></div>
 					</div>
 				</div>
 			</div>
 			<div class="card-box mb-30">
-				<h2 class="h4 pd-20">INFORMATION</h2>
-				<table class="data-table table nowrap">
+				<h2 class="h4 pd-20">ข้อมูล</h2>
+				<table class="responsive-table">
 					<thead>
 						<tr>
 							<th>Name</th>
@@ -383,38 +377,20 @@
 							<th>TDS(ppm)</th>
 							<th>DO(mg/L)</th>
 							<th>Temp(^C)</th>
-							<th class="datatable-nosort">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-						<tr>
-							<td>
-								<h5 class="font-16">SmartWaterQuelity</h5>
-							</td>
-							<td>8.2</td>
-							<td>250</td>
-							<td>32.9</td>
-							<td>3.2</td>
-							<td>
-								<div class="dropdown">
-									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
-										role="button" data-toggle="dropdown">
-										<i class="dw dw-more"></i>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-										<a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-									</div>
-								</div>
-							</td>
+							<td data-label="Name">SmartWaterQuelity</td>
+							<td data-label="pH">8.2</td>
+							<td data-label="TDS(ppm)">250</td>
+							<td data-label="DO(mg/L)">32.9</td>
+							<td data-label="Temp(^C)">3.2</td>
 						</tr>
-
-
 					</tbody>
 				</table>
 			</div>
+			
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				</a>
 			</div>
@@ -431,6 +407,8 @@
 	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 	<script src="vendors/scripts/data-realtime.js"></script>
+	<script src="vendors/scripts/userdisplayindex.js"></script>
+	<script src="vendors/scripts/data.js"></script>
 </body>
 
 </html>

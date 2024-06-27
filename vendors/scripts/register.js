@@ -25,12 +25,11 @@ function isValidEmail(email) {
 }
 
 // Function to write user data to Firestore
-function writeUserData(email, username, fullName, gender, city, state) {
+function writeUserData(email, username, fullName, city, state) {
   firestore.collection("users").add({
     email: email,
     username: username,
     fullName: fullName,
-    gender: gender,
     city: city,
     state: state
   })
@@ -48,7 +47,6 @@ function handleNextButtonClick() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
   var fullName = document.getElementById('fullName').value;
-  var gender = document.querySelector('input[name="gender"]:checked');
   var city = document.getElementById('city').value;
   var state = document.getElementById('state').value;
 
@@ -56,7 +54,6 @@ function handleNextButtonClick() {
   document.getElementById('overview-username').textContent = username;
   document.getElementById('overview-password').textContent = password;
   document.getElementById('overview-fullname').textContent = fullName;
-  document.getElementById('overview-gender').textContent = gender ? gender.value : ''; // Check if gender is selected
   document.getElementById('overview-city').textContent = city;
   document.getElementById('overview-state').textContent = state;
 }
@@ -67,12 +64,11 @@ function handleRegistration() {
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
   const fullNameInput = document.getElementById("fullName");
-  const genderInput = document.querySelector('input[name="gender"]:checked');
   const cityInput = document.getElementById("city");
   const stateInput = document.getElementById("state");
 
   // Check if all required inputs are available
-  if (!emailInput || !usernameInput || !passwordInput || !fullNameInput || !genderInput || !cityInput || !stateInput) {
+  if (!emailInput || !usernameInput || !passwordInput || !fullNameInput || !cityInput || !stateInput) {
     console.error("One or more required inputs are missing");
     return;
   }
@@ -81,7 +77,6 @@ function handleRegistration() {
   const username = usernameInput.value;
   const password = passwordInput.value;
   const fullName = fullNameInput.value;
-  const gender = genderInput ? genderInput.value : ''; // Check if gender is selected
   const city = cityInput.value;
   const state = stateInput.value;
 
@@ -101,7 +96,7 @@ function handleRegistration() {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log("User registered:", user.uid);
-      writeUserData(email, username, fullName, gender, city, state); // Write user data to Firestore
+      writeUserData(email, username, fullName, city, state); // Write user data to Firestore
       document.getElementById('success-modal-btn').click();
     })
     .catch((error) => {
